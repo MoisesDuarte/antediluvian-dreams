@@ -3,8 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <main id="app">
+      <section id="main-window">
+        <label>
+          <i class="ri-sun-line"></i>
+          Place - Day and Hour
+        </label>
+      </section>
+
+      <section id="interaction-box">
+        <section>
+          <label>
+            <i class="ri-hand"></i>
+            Action
+          </label>
+          <ul>
+            <li>Navigate</li>
+            <li>Observe</li>
+            <li>Implement</li>
+            <li>Communicate</li>
+          </ul>
+        </section>
+
+        <section>
+          <label>
+            <i class="ri-briefcase-line"></i>
+            Inventory
+          </label>
+        </section>
+      </section>
+
+      <section id="conversation-box">
+        <label>
+          <i class="ri-user-line"></i>
+          Person Name
+        </label>
+        <button id="button-advance-dialog">Next ></button>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
 </html>
