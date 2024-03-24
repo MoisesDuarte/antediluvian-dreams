@@ -6,28 +6,19 @@
 
     <link rel="stylesheet/less" type="text/css" href="index.less" />
     <script src="https://cdn.jsdelivr.net/npm/less"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
 
     <title>Document</title>
   </head>
   <body>
     <main id="app">
-      <section id="main-window">
-        <label>
-          <i class="ri-sun-line"></i>
-          Place - Day and Hour
-        </label>
-      </section>
+      <main-window 
+        title="Place - Day and Hour"
+        background="./assets/backgrounds/scene_faculty.jpg">
+      </main-window>
 
       <section id="interaction-box">
         <section>
-          <label>
-            <i class="ri-hand"></i>
-            Action
-          </label>
+          <label>Action</label>
           <ul>
             <li>Navigate</li>
             <li>Observe</li>
@@ -37,22 +28,20 @@
         </section>
 
         <section>
-          <label>
-            <i class="ri-briefcase-line"></i>
-            Inventory
-          </label>
+          <label>Inventory</label>
         </section>
       </section>
 
       <section id="conversation-box">
-        <label>
-          <i class="ri-user-line"></i>
-          Person Name
-        </label>
+        <label>Person Name</label>
+        <article id="dialog-container">
+          It's been a while since I've seen any Crimson Wanderers running about...
+        </div>
         <button id="button-advance-dialog">Next ></button>
       </section>
     </main>
 
-    <script src="index.js"></script>
+    <script type="module" src="src/components/main-window.component.js"></script>
+    <script type="module" src="src/index.js"></script>
   </body>
 </html>

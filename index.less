@@ -47,11 +47,6 @@ body {
       font-weight: 500;
     }
 
-    &#main-window {
-      margin-right: 16px;
-      height: 600px;
-    }
-
     &#interaction-box {
       border: none;
       display: flex;
@@ -65,8 +60,6 @@ body {
         flex: 1;
 
         &:first-child {
-          flex: 0 0 auto;
-
           ul {
             list-style: none;
             font-size: 1.25rem;
@@ -86,10 +79,6 @@ body {
             }
           }
         }
-
-        &:last-child {
-          flex: 1;
-        }
       }
     }
 
@@ -100,9 +89,26 @@ body {
       grid-column: span 2;
 
       button#button-advance-dialog {
+        cursor: pointer;
         position: absolute;
         bottom: 12px;
         right: 12px;
+        border: 1px solid var(--background-color);
+        border-radius: 4px;
+        background: var(--text-color);
+        color: var(--background-color);
+        padding: 4px 6px;
+
+        &:hover {
+          border: 1px solid var(--text-color);
+          background: var(--background-color);
+          color: var(--text-color);
+        }
+      }
+
+      article#dialog-container {
+        padding: 16px;
+        font-size: 1.25rem;
       }
     }
   }
