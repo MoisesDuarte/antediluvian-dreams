@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet/less" type="text/css" href="index.less" />
-    <script src="https://cdn.jsdelivr.net/npm/less"></script>
-
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>Document</title>
   </head>
   <body>
@@ -16,32 +13,26 @@
         background="./assets/backgrounds/scene_faculty.jpg">
       </main-window>
 
-      <section id="interaction-box">
-        <section>
-          <label>Action</label>
-          <ul>
-            <li>Navigate</li>
-            <li>Observe</li>
-            <li>Implement</li>
-            <li>Communicate</li>
-          </ul>
-        </section>
+      <interaction-window></interaction-window>
 
-        <section>
-          <label>Inventory</label>
-        </section>
-      </section>
+      <dialog-window
+        title="Person Name"
+        dialog="It's been a while since I've seen any Crimson Wanderers running about...">
+      </dialog-window>
 
-      <section id="conversation-box">
+      <!-- <section id="conversation-box">
         <label>Person Name</label>
         <article id="dialog-container">
           It's been a while since I've seen any Crimson Wanderers running about...
         </div>
         <button id="button-advance-dialog">Next ></button>
-      </section>
+      </section> -->
     </main>
 
     <script type="module" src="src/components/main-window.component.js"></script>
+    <script type="module" src="src/components/interaction-window.component.js"></script>
+    <script type="module" src="src/components/dialog-window.component.js"></script>
+
     <script type="module" src="src/index.js"></script>
   </body>
 </html>

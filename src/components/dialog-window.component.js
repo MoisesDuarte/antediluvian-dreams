@@ -1,0 +1,78 @@
+class DialogWindow extends HTMLElement {
+  constructor() {
+    super();
+
+    const title = this.getAttribute('title');
+    const dialog = this.getAttribute('dialog');
+
+    const shadow = this.attachShadow({ mode: 'open' });
+
+    const section = document.createElement('section');
+    section.id = 'dialog-window';
+    section.innerHTML = `
+      <label>
+        ${title}
+      </label>
+      <article id="dialog-container">
+        ${dialog}
+      </article>
+      <button id="button-advance-dialog">
+        Next >
+      </button>
+    `;
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      :host {
+        grid-column: span 2;
+        margin-top: 16px;
+      }
+
+      #dialog-window {
+        position: relative;
+        border: 1px solid var(--text-color);
+        border-radius: 4px;
+        height: 200px;
+
+        label {
+          display: inline-block;
+          border-radius: 2px 0 2px 0;
+          border: 1px solid var(--text-color);
+          background-color: var(--text-color);
+          color: var(--background-color);
+          padding: 3px 6px;
+          font-weight: 600;
+        }
+
+        article#dialog-container {
+          padding: 16px;
+          font-size: 1.25rem;
+        }
+        
+        button#button-advance-dialog {
+          cursor: pointer;
+          position: absolute;
+          bottom: 12px;
+          right: 12px;
+          border: 1px solid var(--text-color);
+          border-radius: 4px;
+          background: var(--background-color);
+          color: var(--text-color);
+          padding: 6px 8px;
+          font-size: 1.025rem;
+
+          &:hover {
+            border: 1px solid var(--text-color);
+            background: var(--text-color);
+            color: var(--background-color);
+          }
+        }
+      }
+    `;
+
+    shadow.appendChild(section);
+    shadow.appendChild(style);
+  }
+}
+
+customElements.define('dialog-window', DialogWindow);

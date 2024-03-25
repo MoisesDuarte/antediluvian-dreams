@@ -9,11 +9,9 @@ class MainWindow extends HTMLElement {
 
     const section = document.createElement('section');
     section.id = 'main-window';
-
-    const label = document.createElement('label');
-    label.innerHTML = title;
-
-    section.appendChild(label);
+    section.innerHTML = `
+      <label>${title}</label>
+    `;
 
     const style = document.createElement('style');
     style.innerHTML = `
