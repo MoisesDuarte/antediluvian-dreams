@@ -7,21 +7,30 @@ class MainWindow extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    const section = document.createElement('section');
-    section.id = 'main-window';
-    section.innerHTML = `
-      <label>${title}</label>
-    `;
+    shadow.appendChild(this.createSection(title, background));
+    shadow.appendChild(this.createStyle());
+  }
 
+  createSection(title, background) {
+    const section = document.createElement('section');
+
+    section.id = 'main-window';
+    section.innerHTML = `<label>${title}</label>`;
+    section.style.background = `url(${background}) no-repeat`;
+    section.style.backgroundSize = 'cover';
+
+    return section;
+  }
+
+  createStyle() {
     const style = document.createElement('style');
+
     style.innerHTML = `
       #main-window {
         border: 1px solid var(--text-color);
         border-radius: 4px;
         height: 600px;
         margin-right: 16px;
-        background: url(${background}) no-repeat;
-        background-size: cover;
       }
 
       #main-window > label {
@@ -35,8 +44,7 @@ class MainWindow extends HTMLElement {
       }
     `;
 
-    shadow.appendChild(section);
-    shadow.appendChild(style);
+    return style;
   }
 }
 

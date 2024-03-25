@@ -7,23 +7,33 @@ class DialogWindow extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
+    shadow.appendChild(this.createSection(title, dialog));
+    shadow.appendChild(this.createStyle());
+  }
+
+  createSection(title, dialog) {
     const section = document.createElement('section');
+
     section.id = 'dialog-window';
     section.innerHTML = `
-      <label>
-        ${title}
-      </label>
-      <article id="dialog-container">
-        ${dialog}
-      </article>
-      <button id="button-advance-dialog">
-        Next >
-      </button>
+      <label>${title}</label>
+      <article id="dialog-container">${dialog}</article>
+      <button id="button-advance-dialog">Next ></button>
     `;
 
+    section.querySelector('#button-advance-dialog').addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('advance-dialog'));
+    });
+
+    return section;
+  }
+
+  createStyle() {
     const style = document.createElement('style');
+    
     style.innerHTML = `
       :host {
+        display: block;
         grid-column: span 2;
         margin-top: 16px;
       }
@@ -33,45 +43,44 @@ class DialogWindow extends HTMLElement {
         border: 1px solid var(--text-color);
         border-radius: 4px;
         height: 200px;
+      }
 
-        label {
-          display: inline-block;
-          border-radius: 2px 0 2px 0;
-          border: 1px solid var(--text-color);
-          background-color: var(--text-color);
-          color: var(--background-color);
-          padding: 3px 6px;
-          font-weight: 600;
-        }
+      label {
+        display: inline-block;
+        border-radius: 2px 0 2px 0;
+        border: 1px solid var(--text-color);
+        background-color: var(--text-color);
+        color: var(--background-color);
+        padding: 3px 6px;
+        font-weight: 600;
+      }
 
-        article#dialog-container {
-          padding: 16px;
-          font-size: 1.25rem;
-        }
-        
-        button#button-advance-dialog {
-          cursor: pointer;
-          position: absolute;
-          bottom: 12px;
-          right: 12px;
-          border: 1px solid var(--text-color);
-          border-radius: 4px;
-          background: var(--background-color);
-          color: var(--text-color);
-          padding: 6px 8px;
-          font-size: 1.025rem;
+      article#dialog-container {
+        padding: 16px;
+        font-size: 1.25rem;
+      }
+      
+      button#button-advance-dialog {
+        cursor: pointer;
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        border: 1px solid var(--text-color);
+        border-radius: 4px;
+        background: var(--background-color);
+        color: var(--text-color);
+        padding: 6px 8px;
+        font-size: 1.025rem;
+      }
 
-          &:hover {
-            border: 1px solid var(--text-color);
-            background: var(--text-color);
-            color: var(--background-color);
-          }
-        }
+      button#button-advance-dialog:hover {
+        border: 1px solid var(--text-color);
+        background: var(--text-color);
+        color: var(--background-color);
       }
     `;
 
-    shadow.appendChild(section);
-    shadow.appendChild(style);
+    return style;
   }
 }
 
