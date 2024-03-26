@@ -2,8 +2,8 @@ class DialogWindow extends HTMLElement {
   constructor() {
     super();
 
-    const title = this.getAttribute('title');
-    const dialog = this.getAttribute('dialog');
+    const title = this.getAttribute('title') || '';
+    const dialog = this.getAttribute('dialog') || '';
 
     const shadow = this.attachShadow({ mode: 'open' });
 
@@ -11,7 +11,7 @@ class DialogWindow extends HTMLElement {
     shadow.appendChild(this.createStyle());
   }
 
-  createSection(title, dialog) {
+  createSection(title: string, dialog: string) {
     const section = document.createElement('section');
 
     section.id = 'dialog-window';
@@ -21,7 +21,7 @@ class DialogWindow extends HTMLElement {
       <button id="button-advance-dialog">Next ></button>
     `;
 
-    section.querySelector('#button-advance-dialog').addEventListener('click', () => {
+    section.querySelector('#button-advance-dialog')?.addEventListener('click', () => {
       this.dispatchEvent(new CustomEvent('advance-dialog'));
     });
 

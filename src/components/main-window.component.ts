@@ -2,8 +2,8 @@ class MainWindow extends HTMLElement {
   constructor() {
     super();
 
-    const title = this.getAttribute('title');
-    const background = this.getAttribute('background');
+    const title = this.getAttribute('title') || '';
+    const background = this.getAttribute('background') || '';
 
     const shadow = this.attachShadow({ mode: 'open' });
 
@@ -11,7 +11,7 @@ class MainWindow extends HTMLElement {
     shadow.appendChild(this.createStyle());
   }
 
-  createSection(title, background) {
+  createSection(title: string, background: string) {
     const section = document.createElement('section');
 
     section.id = 'main-window';
