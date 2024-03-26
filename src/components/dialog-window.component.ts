@@ -53,6 +53,7 @@ class DialogWindow extends HTMLElement {
         background-color: var(--text-color);
         color: var(--background-color);
         padding: 3px 6px;
+        font-size: 1.25rem;
         font-weight: 600;
       }
 
@@ -75,6 +76,7 @@ class DialogWindow extends HTMLElement {
           color: var(--text-color);
           padding: 6px 8px;
           font-size: 1.025rem;
+          font-family: "IBM Plex Mono", monospace;
 
           &:hover {
             border: 1px solid var(--text-color);

@@ -39,6 +39,7 @@ class MainWindow extends HTMLElement {
           background-color: var(--text-color);
           color: var(--background-color);
           padding: 3px 6px;
+          font-size: 1.25rem;
           font-weight: 600;
         }
       }

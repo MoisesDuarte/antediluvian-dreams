@@ -9,13 +9,13 @@ class InteractionWindow extends HTMLElement {
   }
 
   createSection() {
-    const interactions = ['navigate', 'observe', 'implement', 'communicate'];
+    const interactions = ['move', 'look', 'use', 'talk'];
     const section = document.createElement('section');
     
     section.id = 'interaction-window';
     section.innerHTML = `
     <article>
-      <label>
+      <label id="interactions-label">
         Actions
       </label>
       
@@ -33,22 +33,25 @@ class InteractionWindow extends HTMLElement {
     `;
 
 
+    const interactionLabel = section.querySelector('#interactions-label');
     const interactionsList = section.querySelector('#interactions-list');
 
     interactions.forEach((action) => {
       const actionsList = section.querySelector(`#${action}-list`);
 
       section.querySelector(`#action-${action}`)?.addEventListener('click', () => {
-        if (interactionsList && actionsList) {
+        if (interactionsList && actionsList && interactionLabel) {
           interactionsList.classList.value = 'hidden';
           actionsList.classList.value = '';
+          interactionLabel.innerHTML = action;
         }
       })
 
       section.querySelector(`#${action}-back`)?.addEventListener('click', () => {
-        if (interactionsList && actionsList) {
+        if (interactionsList && actionsList && interactionLabel) {
           interactionsList.classList.value = '';
           actionsList.classList.value = 'hidden';
+          interactionLabel.innerHTML = 'Actions';
         }
       })
     })
@@ -79,29 +82,39 @@ class InteractionWindow extends HTMLElement {
 
           label {
             display: inline-block;
+            width: 85px;
             border-radius: 2px 0 2px 0;
             border: 1px solid var(--text-color);
             background-color: var(--text-color);
             color: var(--background-color);
             padding: 3px 6px;
+            font-size: 1.25rem;
             font-weight: 600;
+            transition: left 0.5s ease;
+
+            &:first-letter {
+              text-transform: uppercase;
+            }
           }
 
           ul {
             list-style: none;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             padding: 0;
             margin: 16px;
 
             li {
               cursor: pointer;
+              padding: 2px 8px;
 
               &:first-letter {
                 text-transform: uppercase;
               }
 
               &:hover {
-                text-decoration: underline;
+                border-radius: 4px;
+                background-color: var(--text-color);
+                color: var(--background-color);
               }
             }
           }
