@@ -31,16 +31,16 @@ class MainWindow extends HTMLElement {
         border-radius: 4px;
         height: 600px;
         margin-right: 16px;
-      }
 
-      #main-window > label {
-        display: inline-block;
-        border-radius: 2px 0 2px 0;
-        border: 1px solid var(--text-color);
-        background-color: var(--text-color);
-        color: var(--background-color);
-        padding: 3px 6px;
-        font-weight: 600;
+        label {
+          display: inline-block;
+          border-radius: 2px 0 2px 0;
+          border: 1px solid var(--text-color);
+          background-color: var(--text-color);
+          color: var(--background-color);
+          padding: 3px 6px;
+          font-weight: 600;
+        }
       }
     `;
 

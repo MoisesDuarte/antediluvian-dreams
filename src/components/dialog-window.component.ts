@@ -19,7 +19,7 @@ class DialogWindow extends HTMLElement {
     section.innerHTML = `
       <label>${title}</label>
       <article id="dialog-container">${dialog}</article>
-      <button id="button-advance-dialog">Next ></button>
+      <button id="advance-dialog">Next ></button>
     `;
 
     section.querySelector('#button-advance-dialog')?.addEventListener('click', () => {
@@ -56,29 +56,33 @@ class DialogWindow extends HTMLElement {
         font-weight: 600;
       }
 
-      article#dialog-container {
-        padding: 16px;
-        font-size: 1.25rem;
+      article {
+        &#dialog-container {
+          padding: 16px;
+          font-size: 1.25rem;
+        }
       }
       
-      button#button-advance-dialog {
-        cursor: pointer;
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
-        border: 1px solid var(--text-color);
-        border-radius: 4px;
-        background: var(--background-color);
-        color: var(--text-color);
-        padding: 6px 8px;
-        font-size: 1.025rem;
-      }
+      button{
+        &#advance-dialog {
+          cursor: pointer;
+          position: absolute;
+          bottom: 12px;
+          right: 12px;
+          border: 1px solid var(--text-color);
+          border-radius: 4px;
+          background: var(--background-color);
+          color: var(--text-color);
+          padding: 6px 8px;
+          font-size: 1.025rem;
 
-      button#button-advance-dialog:hover {
-        border: 1px solid var(--text-color);
-        background: var(--text-color);
-        color: var(--background-color);
-      }
+          &:hover {
+            border: 1px solid var(--text-color);
+            background: var(--text-color);
+            color: var(--background-color);
+          }
+        }
+    }
     `;
 
     return style;

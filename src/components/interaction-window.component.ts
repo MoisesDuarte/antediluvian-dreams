@@ -15,13 +15,16 @@ class InteractionWindow extends HTMLElement {
     section.id = 'interaction-window';
     section.innerHTML = `
     <article>
-      <label>Actions</label>
-      <ul id="interactions-options">
+      <label>
+        Actions
+      </label>
+      
+      <ul id="interactions-list">
         ${interactions.map(action => `<li id="action-${action}">${action}</li>`).join('')}
       </ul>
 
       ${interactions.map(action => `
-        <ul id="${action}-options" class="hidden">
+        <ul id="${action}-list" class="hidden">
           <li>Item A</li>
           <li id="${action}-back">< Back</li>
         </ul>
@@ -29,22 +32,23 @@ class InteractionWindow extends HTMLElement {
     </article>
     `;
 
-    const parentItem = section.querySelector('#interactions-options');
+
+    const interactionsList = section.querySelector('#interactions-list');
 
     interactions.forEach((action) => {
-      const childrenItem = section.querySelector(`#${action}-options`);
+      const actionsList = section.querySelector(`#${action}-list`);
 
       section.querySelector(`#action-${action}`)?.addEventListener('click', () => {
-        if (parentItem && childrenItem) {
-          parentItem.classList.value = 'hidden';
-          childrenItem.classList.value = '';
+        if (interactionsList && actionsList) {
+          interactionsList.classList.value = 'hidden';
+          actionsList.classList.value = '';
         }
       })
 
       section.querySelector(`#${action}-back`)?.addEventListener('click', () => {
-        if (parentItem && childrenItem) {
-          parentItem.classList.value = '';
-          childrenItem.classList.value = 'hidden';
+        if (interactionsList && actionsList) {
+          interactionsList.classList.value = '';
+          actionsList.classList.value = 'hidden';
         }
       })
     })
@@ -67,42 +71,41 @@ class InteractionWindow extends HTMLElement {
         height: 600px;
         gap: 16px;
         user-select: none;
-      }
 
-      #interaction-window article {
-        border: 1px solid var(--text-color);
-        border-radius: 4px;
-        flex: 1;
-      }
+        article {
+          border: 1px solid var(--text-color);
+          border-radius: 4px;
+          flex: 1;
 
-      #interaction-window article label {
-        display: inline-block;
-        border-radius: 2px 0 2px 0;
-        border: 1px solid var(--text-color);
-        background-color: var(--text-color);
-        color: var(--background-color);
-        padding: 3px 6px;
-        font-weight: 600;
-      }
+          label {
+            display: inline-block;
+            border-radius: 2px 0 2px 0;
+            border: 1px solid var(--text-color);
+            background-color: var(--text-color);
+            color: var(--background-color);
+            padding: 3px 6px;
+            font-weight: 600;
+          }
 
-      #interaction-window article ul {
-        list-style: none;
-        font-size: 1.25rem;
-        padding: 0;
-        margin: 16px;
-      }
+          ul {
+            list-style: none;
+            font-size: 1.25rem;
+            padding: 0;
+            margin: 16px;
 
-      #interaction-window article ul li {
-        cursor: pointer;
-      }
+            li {
+              cursor: pointer;
 
-      #interaction-window article ul li:first-letter {
-        font-weight: 600;
-        text-transform: uppercase;
-      }
+              &:first-letter {
+                text-transform: uppercase;
+              }
 
-      #interaction-window article ul li:hover {
-        text-decoration: underline;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
       }
     `;
 
