@@ -15,6 +15,7 @@ class DialogWindow extends HTMLElement {
     const section = document.createElement('section');
 
     section.id = 'dialog-window';
+    
     section.innerHTML = `
       <label>${title}</label>
       <article id="dialog-container">${dialog}</article>
