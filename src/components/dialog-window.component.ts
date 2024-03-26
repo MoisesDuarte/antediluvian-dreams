@@ -60,7 +60,8 @@ class DialogWindow extends HTMLElement {
       article {
         &#dialog-container {
           padding: 16px;
-          font-size: 1.25rem;
+          font-size: 1.225rem;
+          font-weight: 600;
         }
       }
       
@@ -68,7 +69,7 @@ class DialogWindow extends HTMLElement {
         &#advance-dialog {
           cursor: pointer;
           position: absolute;
-          bottom: 12px;
+          bottom: -16px;
           right: 12px;
           border: 1px solid var(--text-color);
           border-radius: 4px;
